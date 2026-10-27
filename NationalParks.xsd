@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  NationalParks.xsd - CSE445 Assignment 4, Q1.1
+  Schema for a directory of national parks (Figure 1 of the assignment).
+
+  Structure (children appear in the left-to-right order of Figure 1):
+    NationalParks
+      NationalPark (1..many)          @Rating         optional attribute
+        Name     (exactly 1)
+        Phone    (1..many)
+        Address  (exactly 1)          @NearestAirport required attribute
+          Number, Street, City, State, Zip (exactly 1 each, in this order)
+
+  Written in the same style as the course sample Courses.xsd: one global root
+  element, named complex types, a target namespace, and qualified local elements.
+  Per the Gradescope FAQ, Phone is a plain string (no pattern) and integers use xsd:int.
+-->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="urn:cse445:nationalparks"
+            targetNamespace="urn:cse445:nationalparks"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+
+  <xsd:annotation>
+    <xsd:documentation xml:lang="en">
+      CSE445 Assignment 4: directory of national parks.
+    </xsd:documentation>
+  </xsd:annotation>
+
+  <!-- The only global element, so it is the only element allowed as the document root. -->
+  <xsd:element name="NationalParks" type="NationalParksType"/>
+
+  <!-- Root content: one or more parks. -->
+  <xsd:complexType name="NationalParksType">
+    <xsd:sequence>
+      <xsd:element name="NationalPark" type="NationalParkType" minOccurs="1" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <!-- One park: exactly one Name, at least one Phone, exactly one Address. -->
+  <xsd:complexType name="NationalParkType">
+    <xsd:sequence>
+      <xsd:element name="Name" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="Phone" type="xsd:string" minOccurs="1" maxOccurs="unbounded"/>
+      <xsd:element name="Address" type="AddressType" minOccurs="1" maxOccurs="1"/>
+    </xsd:sequence>
+    <!-- Optional attribute: some parks have a rating, some do not. -->
+    <xsd:attribute name="Rating" type="xsd:decimal" use="optional"/>
+  </xsd:complexType>
+
+  <!-- Street address of the park. -->
+  <xsd:complexType name="AddressType">
+    <xsd:sequence>
+      <xsd:element name="Number" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="Street" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="City" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="State" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="Zip" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+    </xsd:sequence>
+    <!-- Required attribute: every Address must name its nearest airport. -->
+    <xsd:attribute name="NearestAirport" type="xsd:string" use="required"/>
+  </xsd:complexType>
+
+</xsd:schema>

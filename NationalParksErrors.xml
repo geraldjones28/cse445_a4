@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  NationalParksErrors.xml - CSE445 Assignment 4, Q1.3
+  Copy of NationalParks.xml with the five required errors injected.
+  Each injected error is marked below with an "ERROR (n)" comment:
+    (1) Root element is NationalPark instead of NationalParks.
+    (2) A required attribute (NearestAirport) is missing   - Zion.
+    (3) A Phone element is missing                         - Great Smoky Mountains.
+    (4) An Address element has no closing tag              - Everglades.
+    (5) Two names are provided for one park                - Joshua Tree.
+-->
+<!-- ERROR (1): the root should be NationalParks. -->
+<NationalPark xmlns="urn:cse445:nationalparks"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="urn:cse445:nationalparks NationalParks.xsd">
+
+  <NationalPark Rating="4.9">
+    <Name>Grand Canyon</Name>
+    <Phone>928-638-7496</Phone>
+    <Phone>888-297-2757</Phone>
+    <Phone>866-499-2574</Phone>
+    <Address NearestAirport="FlagStaff">
+      <Number>8</Number>
+      <Street>S Entrance Road</Street>
+      <City>Grand Canyon</City>
+      <State>AZ</State>
+      <Zip>86023</Zip>
+    </Address>
+  </NationalPark>
+
+  <NationalPark Rating="4.9">
+    <Name>Zion</Name>
+    <Phone>435-772-3256</Phone>
+    <!-- ERROR (2): the required NearestAirport attribute is missing. -->
+    <Address>
+      <Number>1</Number>
+      <Street>Zion Park Blvd</Street>
+      <City>Springdale</City>
+      <State>UT</State>
+      <Zip>84767</Zip>
+    </Address>
+  </NationalPark>
+
+  <NationalPark Rating="4.8">
+    <Name>Rocky Mountain</Name>
+    <Phone>970-586-1206</Phone>
+    <Phone>970-586-1222</Phone>
+    <Address NearestAirport="Denver International">
+      <Number>1000</Number>
+      <Street>US Highway 36</Street>
+      <City>Estes Park</City>
+      <State>CO</State>
+      <Zip>80517</Zip>
+    </Address>
+  </NationalPark>
+
+  <NationalPark>
+    <Name>Great Smoky Mountains</Name>
+    <!-- ERROR (3): this park's only Phone element is missing. -->
+    <Address NearestAirport="McGhee Tyson">
+      <Number>107</Number>
+      <Street>Park Headquarters Road</Street>
+      <City>Gatlinburg</City>
+      <State>TN</State>
+      <Zip>37738</Zip>
+    </Address>
+  </NationalPark>
+
+  <NationalPark Rating="4.8">
+    <Name>Acadia</Name>
+    <Phone>207-288-3338</Phone>
+    <Phone>207-288-8800</Phone>
+    <Address NearestAirport="Hancock County-Bar Harbor">
+      <Number>20</Number>
+      <Street>McFarland Hill Drive</Street>
+      <City>Bar Harbor</City>
+      <State>ME</State>
+      <Zip>04609</Zip>
+    </Address>
+  </NationalPark>
+
+  <NationalPark>
+    <!-- ERROR (5): two Name elements for one park. -->
+    <Name>Joshua Tree</Name>
+    <Name>Joshua Tree National Park</Name>
+    <Phone>760-367-5500</Phone>
+    <Phone>760-367-5554</Phone>
+    <Address NearestAirport="Palm Springs International">
+      <Number>74485</Number>
+      <Street>National Park Drive</Street>
+      <City>Twentynine Palms</City>
+      <State>CA</State>
+      <Zip>92277</Zip>
+    </Address>
+  </NationalPark>
+
+  <NationalPark Rating="4.9">
+    <Name>Glacier</Name>
+    <Phone>406-888-7800</Phone>
+    <Phone>406-888-7806</Phone>
+    <Address NearestAirport="Glacier Park International">
+      <Number>61</Number>
+      <Street>Scoyen Circle</Street>
+      <City>West Glacier</City>
+      <State>MT</State>
+      <Zip>59936</Zip>
+    </Address>
+  </NationalPark>
+
+  <NationalPark>
+    <Name>Mount Rainier</Name>
+    <Phone>360-569-2211</Phone>
+    <Phone>360-569-2177</Phone>
+    <Address NearestAirport="Seattle-Tacoma International">
+      <Number>55210</Number>
+      <Street>238th Avenue East</Street>
+      <City>Ashford</City>
+      <State>WA</State>
+      <Zip>98304</Zip>
+    </Address>
+  </NationalPark>
+
+  <NationalPark>
+    <Name>Sequoia and Kings Canyon</Name>
+    <Phone>559-565-3341</Phone>
+    <Address NearestAirport="Fresno Yosemite International">
+      <Number>47050</Number>
+      <Street>Generals Highway</Street>
+      <City>Three Rivers</City>
+      <State>CA</State>
+      <Zip>93271</Zip>
+    </Address>
+  </NationalPark>
+
+  <NationalPark Rating="4.8">
+    <Name>Shenandoah</Name>
+    <Phone>540-999-3500</Phone>
+    <Phone>800-732-0911</Phone>
+    <Address NearestAirport="Shenandoah Valley Regional">
+      <Number>3655</Number>
+      <Street>US Highway 211 East</Street>
+      <City>Luray</City>
+      <State>VA</State>
+      <Zip>22835</Zip>
+    </Address>
+  </NationalPark>
+
+  <NationalPark>
+    <Name>Everglades</Name>
+    <Phone>305-242-7700</Phone>
+    <!-- ERROR (4): this Address element is never closed. -->
+    <Address NearestAirport="Miami International">
+      <Number>40001</Number>
+      <Street>State Road 9336</Street>
+      <City>Homestead</City>
+      <State>FL</State>
+      <Zip>33034</Zip>
+  </NationalPark>
+
+</NationalPark>
